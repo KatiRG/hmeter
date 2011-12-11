@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @usertable.name %>
+</p>
+
+<p>
+  <b>Mood:</b>
+  <%= @usertable.mood %>
+</p>
+
+<br>
+<%= link_to 'Edit', edit_usertable_path(@usertable) %> |
+<%= link_to 'Return to the Happy OMeter', usertables_path %>

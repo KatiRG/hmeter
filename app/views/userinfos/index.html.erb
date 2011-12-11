@@ -1,0 +1,25 @@
+<h1>Listing userinfos</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Mood</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @userinfos.each do |userinfo| %>
+  <tr>
+    <td><%= userinfo.name %></td>
+    <td><%= userinfo.mood %></td>
+    <td><%= link_to 'Show', userinfo %></td>
+    <td><%= link_to 'Edit', edit_userinfo_path(userinfo) %></td>
+    <td><%= link_to 'Destroy', userinfo, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Userinfo', new_userinfo_path %>
