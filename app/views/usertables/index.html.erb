@@ -1,6 +1,11 @@
-<h1>The Happy O'Meter</h1>
+<!--<h1>The Happy O'Meter</h1>-->
 
-<p><h2><%= Date.today.to_formatted_s(:long) %></h2></p>
+<%= link_to 'What is your mood?', new_usertable_path, :style => "font-size:22px;font-weight:bold;" %><p>
+
+
+<p><h3><%= Date.today.to_formatted_s(:long) %></h3></p>
+
+Hello, <%= @user.uname %>
 
 <!--begin my table-->
 <table border="1" 
@@ -16,35 +21,35 @@ cellpadding="10">
 <% @usertables.each do |usertable| %>
   <tr>
   <% if usertable.mood == "Overjoyed" %>    
-    <td><%= usertable.name %>&nbsp;&nbsp;<%= link_to 'Delete', usertable, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= usertable.user.uname %>&nbsp;&nbsp;<%= link_to 'Delete', usertable, confirm: 'Are you sure?', method: :delete %></td>
     <td></td>
     <td></td>
     <td></td>
     <td></td>
 <% elsif usertable.mood == "Happy" %>
     <td></td>
-    <td><%= usertable.name %>&nbsp;&nbsp;<%= link_to 'Delete', usertable, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= usertable.user.uname %>&nbsp;&nbsp;<%= link_to 'Delete', usertable, confirm: 'Are you sure?', method: :delete %></td>
     <td></td>
     <td></td>
     <td></td>
   <% elsif usertable.mood == "Good Mood" %>
     <td></td>
     <td></td>
-    <td><%= usertable.name %>&nbsp;&nbsp;<%= link_to 'Delete', usertable, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= usertable.user.uname %>&nbsp;&nbsp;<%= link_to 'Delete', usertable, confirm: 'Are you sure?', method: :delete %></td>
     <td></td>
     <td></td>
   <% elsif usertable.mood == "Miserable" %>
     <td></td>
     <td></td>
     <td></td>
-    <td><%= usertable.name %>&nbsp;&nbsp;<%= link_to 'Delete', usertable, confirm: 'Are you sure?', method: :delete %></td>  
+    <td><%= usertable.user.uname %>&nbsp;&nbsp;<%= link_to 'Delete', usertable, confirm: 'Are you sure?', method: :delete %></td>  
     <td></td>
   <% elsif usertable.mood == "Excited" %>
     <td></td>
     <td></td>
     <td></td>
     <td></td>
-    <td><%= usertable.name %>&nbsp;&nbsp;<%= link_to 'Delete', usertable, confirm: 'Are you sure?', method: :delete %></td>  
+    <td><%= usertable.user.uname %>&nbsp;&nbsp;<%= link_to 'Delete', usertable, confirm: 'Are you sure?', method: :delete %></td>  
 
   <% end %>  
   </tr>
@@ -77,9 +82,6 @@ cellpadding="10">
 <!--</table>-->
 
 <br />
-
-
-<%= link_to 'New User', new_usertable_path, :style => "font-size:22px;font-weight:bold;" %><p>
 
 
 

@@ -2,11 +2,13 @@ class UsertablesController < ApplicationController
   # GET /usertables
   # GET /usertables.json
   def index
-    @usertables = Usertable.all
+  @user = User.find(session[:user_id])    
+  @usertables = Usertable.find_all_by_user_id(@user.id)   
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @usertables }
+      
     end
   end
 
@@ -14,6 +16,7 @@ class UsertablesController < ApplicationController
   # GET /usertables/1.json
   def show
     @usertable = Usertable.find(params[:id])
+    @user = User.find(session[:user_id])
     
     respond_to do |format|
       format.html # show.html.erb
@@ -40,7 +43,9 @@ class UsertablesController < ApplicationController
   # POST /usertables
   # POST /usertables.json
   def create
+    @user = User.find(session[:user_id])
     @usertable = Usertable.new(params[:usertable])
+    @usertable.user = @user
 
     respond_to do |format|
       if @usertable.save
@@ -80,4 +85,6 @@ class UsertablesController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  
 end

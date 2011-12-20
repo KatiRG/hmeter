@@ -1,7 +1,17 @@
 Hmeter::Application.routes.draw do
+  get "users/new"
+
+  get "pages/home"
+
+  match '/signup',  :to => 'users#new'
+
+  root :to => 'pages#home'
+
   resources :usertables
 
   resources :userinfos
+
+  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

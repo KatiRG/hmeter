@@ -6,11 +6,27 @@
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>
+  <%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
+  <%= stylesheet_link_tag 'custom', :media => 'screen' %>
 </head>
 <body>
 <div class="container">
+    <header>
+       <%= image_tag("hmeter_logo_frompdf.png", :alt => "logo", :class => "round") %>
+        <!--<nav class="round">-->
+        <!--  <ul>-->
+        <!--    <li><%= link_to "Home", '#' %></li>-->
+        <!--    <li><%= link_to "Sign in", '#' %></li>-->
+        <!--  </ul>-->
+        <!--</nav>-->
+      </header>
   
-    <%= yield %>
+    <section class="round">
+      <%= yield %>
+    </section>
+
+    <%= debug(params) if Rails.env.development? %>
   
 </div>
 
