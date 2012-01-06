@@ -31,10 +31,18 @@ class UsersController < ApplicationController
 
    def create
     @user = User.new(params[:user])
+    
     if @user.save
-      # Handle a successful save.
-      session[:user_id] = @user.id
+      sign_in @user
+      flash[:success] = "Welcome to the Happy O'Meter!"
       redirect_to usertables_path
+     # redirect_to new_usertable_path
+     # redirect_to @user
+
+     # # Handle a successful save.
+     # session[:user_id] = @user.id
+     # redirect_to new_usertable_path
+     # redirect_to usertables_path 
     else
       @title = "Sign up"
       render 'new'

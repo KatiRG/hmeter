@@ -13,13 +13,22 @@
 <body>
 <div class="container">
     <header>
+
        <%= image_tag("hmeter_logo_frompdf.png", :alt => "logo", :class => "round") %>
-        <!--<nav class="round">-->
-        <!--  <ul>-->
+     
+
+        <nav>
+        <!--  <ul> -->
         <!--    <li><%= link_to "Home", '#' %></li>-->
         <!--    <li><%= link_to "Sign in", '#' %></li>-->
-        <!--  </ul>-->
-        <!--</nav>-->
+            <% if signed_in? %>
+           <b>   <span style="float: right; "><%= link_to "Sign out", signout_path, :method => :delete %></span></b>
+            <% end %>
+            
+        <!--  </ul> -->
+        </nav>
+
+          
       </header>
   
     <section class="round">
