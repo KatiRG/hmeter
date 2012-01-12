@@ -2,10 +2,14 @@ class UsertablesController < ApplicationController
   # GET /usertables
   # GET /usertables.json
   def index
-  # @user = User.find_by_id(session[:remember_token])  
- # @user = User.find_by_id(cookies[:remember_token])  
- # @usertables = Usertable.find_all_by_user_id(@user.id)
-   @usertables = Usertable.all
+   # @user = User.find_by_id(session[:remember_token])  
+   # @user = User.find_by_id(cookies[:remember_token])
+
+   # @user = User.find(session[:user_id])
+   # @usertables = Usertable.find_all_by_user_id(@user.id)
+
+   @user = current_user
+   @usertables = Usertable.find_all_by_user_id(@user.id)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -46,8 +50,12 @@ class UsertablesController < ApplicationController
   # POST /usertables.json
   def create
     # @user = User.find(session[:user_id])
+    # @usertable = Usertable.new(params[:usertable])
+    # @usertable.user = @user
+
+    @user = current_user
     @usertable = Usertable.new(params[:usertable])
-   # @usertable.user = @user
+    @usertable.user = @user
 
     respond_to do |format|
       if @usertable.save

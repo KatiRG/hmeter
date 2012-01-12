@@ -1,12 +1,11 @@
 Hmeter::Application.routes.draw do
   get "sessions/new"
-
   get "users/new"
-
   get "pages/home"
+  get "pages/about"
 
   root :to => 'pages#home'
-
+  
   resources :usertables
   resources :userinfos
   resources :users
@@ -15,6 +14,7 @@ Hmeter::Application.routes.draw do
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'
   match '/signout',  :to => 'sessions#destroy'
+  match '/about',   :to => 'pages#about'
   
 
   # The priority is based upon order of creation:
