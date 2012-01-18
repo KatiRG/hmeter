@@ -27,4 +27,13 @@ Hmeter::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  #18.1.2012 from stackoverflow:
+  #http://stackoverflow.com/questions/7275636/rails-3-1-0-actionviewtemplateerrror-application-css-isnt-precompiled  
+  config.assets.precompile += %w[bootstrap-alerts.js] #Lots of other space separated files
+  config.assets.compile = false
+  config.assets.digest = true
+  config.assets.manifest = Rails.root.join("public/assets")
+  
+
 end
